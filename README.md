@@ -34,6 +34,14 @@ func main() {
 
 then, run `go mod tidy`
 
+## packaging
+
+```shell
+go install fyne.io/fyne/v2/cmd/fyne@latest
+
+fyne package -appVersion 1.0.0 -name MarkDown -release
+```
+
 # references
 
 - https://fyne.io/
