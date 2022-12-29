@@ -1,4 +1,4 @@
-module md
+module md-editor
 
 go 1.19
 
