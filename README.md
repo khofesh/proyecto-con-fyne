@@ -42,8 +42,16 @@ go install fyne.io/fyne/v2/cmd/fyne@latest
 fyne package -appVersion 1.0.0 -name MarkDown -release
 ```
 
+## sqlite
+
+```shell
+sudo dnf install sqlite
+sudo dnf install sqlitebrowser
+```
+
 # references
 
 - https://fyne.io/
 - https://www.udemy.com/course/building-gui-applications-with-fyne-and-go-golang/
 - https://developer.fyne.io/started/
+- https://developer.fedoraproject.org/tech/database/sqlite/about.html
