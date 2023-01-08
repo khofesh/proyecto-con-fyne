@@ -50,6 +50,12 @@ sudo dnf install sqlitebrowser
 go get github.com/glebarez/go-sqlite
 ```
 
+clean cache
+
+```shell
+go clean -modcache
+```
+
 # references
 
 - https://fyne.io/

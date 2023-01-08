@@ -14,7 +14,7 @@ type Repository interface {
 	Migrate() error
 	InsertHolding(h Holdings) (*Holdings, error)
 	AllHoldings() ([]Holdings, error)
-	GetHoldingByID(id int) (*Holdings, error)
+	GetHoldingByID(id int64) (*Holdings, error)
 	UpdateHolding(id int64, updated Holdings) error
 	DeleteHolding(id int64) error
 }

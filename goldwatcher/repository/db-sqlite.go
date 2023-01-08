@@ -78,7 +78,7 @@ func (repo *SQLiteRepository) AllHoldings() ([]Holdings, error) {
 	return all, nil
 }
 
-func (repo *SQLiteRepository) GetHoldingByID(id int) (*Holdings, error) {
+func (repo *SQLiteRepository) GetHoldingByID(id int64) (*Holdings, error) {
 	row := repo.Conn.QueryRow("select id, amount, purchase_date, purchase_price from holdings where id = ?", id)
 
 	var h Holdings
