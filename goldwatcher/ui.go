@@ -41,12 +41,17 @@ func (app *Config) makeUI() {
 
 	go func() {
 		for range time.Tick(time.Second * 5) {
-			app.refreshPriceContent()
+			app.refreshPriceContent(true)
 		}
 	}()
 }
 
-func (app *Config) refreshPriceContent() {
+func (app *Config) refreshPriceContent(isInGoroutine bool) {
+	if isInGoroutine {
+		app.mutex.Lock()
+		defer app.mutex.Unlock()
+	}
+
 	app.InfoLog.Println("updating prices")
 	open, current, change := app.getPriceText()
 	app.PriceContainer.Objects = []fyne.CanvasObject{

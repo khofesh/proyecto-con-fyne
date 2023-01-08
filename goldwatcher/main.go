@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sync"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -19,6 +20,7 @@ type Config struct {
 	Toolbar             *widget.Toolbar
 	PriceChartContainer *fyne.Container
 	HTTPClient          *http.Client
+	mutex               sync.Mutex
 }
 
 var myApp Config

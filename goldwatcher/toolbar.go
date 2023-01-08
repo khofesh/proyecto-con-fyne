@@ -12,7 +12,7 @@ func (app *Config) getToolBar() *widget.Toolbar {
 
 		}),
 		widget.NewToolbarAction(theme.ViewRefreshIcon(), func() {
-			app.refreshPriceContent()
+			app.refreshPriceContent(false)
 		}),
 		widget.NewToolbarAction(theme.SettingsIcon(), func() {}),
 	)
