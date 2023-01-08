@@ -79,7 +79,7 @@ func (repo *SQLiteRepository) AllHoldings() ([]Holdings, error) {
 }
 
 func (repo *SQLiteRepository) GetHoldingByID(id int) (*Holdings, error) {
-	row := repo.Conn.QueryRow("select id, amount, purchase_date, purchase_price from holding where id = ?", id)
+	row := repo.Conn.QueryRow("select id, amount, purchase_date, purchase_price from holdings where id = ?", id)
 
 	var h Holdings
 	var unixTime int64
@@ -134,7 +134,7 @@ func (repo *SQLiteRepository) DeleteHolding(id int64) error {
 	}
 
 	if rowsAffected == 0 {
-		return errUpdateFailed
+		return errDeleteFailed
 	}
 
 	return nil

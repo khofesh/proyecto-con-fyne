@@ -47,6 +47,7 @@ fyne package -appVersion 1.0.0 -name MarkDown -release
 ```shell
 sudo dnf install sqlite
 sudo dnf install sqlitebrowser
+go get github.com/glebarez/go-sqlite
 ```
 
 # references
