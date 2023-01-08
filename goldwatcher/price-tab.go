@@ -7,7 +7,6 @@ import (
 	"image"
 	"image/png"
 	"io"
-	"log"
 	"os"
 	"strings"
 
@@ -18,7 +17,6 @@ import (
 
 func (app *Config) pricesTab() *fyne.Container {
 	chart := app.getChart()
-	log.Println(chart)
 	chartContainer := container.NewVBox(chart)
 	app.PriceChartContainer = chartContainer
 
@@ -43,7 +41,7 @@ func (app *Config) getChart() *canvas.Image {
 		Height: 410,
 	})
 
-	img.FillMode = canvas.ImageFillOriginal
+	img.FillMode = canvas.ImageFillStretch
 
 	return img
 }
