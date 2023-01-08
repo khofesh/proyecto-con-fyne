@@ -11,7 +11,9 @@ func (app *Config) getToolBar() *widget.Toolbar {
 		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
 
 		}),
-		widget.NewToolbarAction(theme.ViewRefreshIcon(), func() {}),
+		widget.NewToolbarAction(theme.ViewRefreshIcon(), func() {
+			app.refreshPriceContent()
+		}),
 		widget.NewToolbarAction(theme.SettingsIcon(), func() {}),
 	)
 

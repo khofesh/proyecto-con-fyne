@@ -1,6 +1,9 @@
 package main
 
 import (
+	"time"
+
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
@@ -35,4 +38,27 @@ func (app *Config) makeUI() {
 	finalContent := container.NewVBox(priceContent, toolbar, tabs)
 
 	app.MainWindow.SetContent(finalContent)
+
+	go func() {
+		for range time.Tick(time.Second * 5) {
+			app.refreshPriceContent()
+		}
+	}()
+}
+
+func (app *Config) refreshPriceContent() {
+	app.InfoLog.Println("updating prices")
+	open, current, change := app.getPriceText()
+	app.PriceContainer.Objects = []fyne.CanvasObject{
+		open,
+		current,
+		change,
+	}
+	app.PriceContainer.Refresh()
+
+	chart := app.getChart()
+	app.PriceChartContainer.Objects = []fyne.CanvasObject{
+		chart,
+	}
+	app.PriceChartContainer.Refresh()
 }
