@@ -12,7 +12,7 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/widget"
 
-	_ "github.com/glebarez/go-sqlite"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type Config struct {
@@ -71,7 +71,7 @@ func (app *Config) connectSQL() (*sql.DB, error) {
 		app.InfoLog.Println("db in:", path)
 	}
 
-	db, err := sql.Open("sqlite", path)
+	db, err := sql.Open("sqlite3", path)
 	if err != nil {
 		return nil, err
 	}
