@@ -26,6 +26,7 @@ type Price struct {
 
 func (g *Gold) GetPrices() (*Price, error) {
 	if g.Client == nil {
+		log.Println("setting to live client in GetPrices")
 		g.Client = &http.Client{}
 	}
 
