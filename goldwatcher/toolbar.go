@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
@@ -22,9 +21,7 @@ func (app *Config) getToolBar() *widget.Toolbar {
 			app.refreshPriceContent(false)
 		}),
 		widget.NewToolbarAction(theme.SettingsIcon(), func() {
-			w := app.showPreferences()
-			w.Resize(fyne.NewSize(300, 200))
-			w.Show()
+			app.showPreferences()
 		}),
 	)
 
@@ -106,10 +103,7 @@ func (app *Config) addHoldingsDialog() dialog.Dialog {
 	return addForm
 }
 
-func (app *Config) showPreferences() fyne.Window {
-	win := app.App.NewWindow("Preferences")
-
-	label := widget.NewLabel("Preferred Currency")
+func (app *Config) showPreferences() {
 	cur := widget.NewSelect(
 		[]string{
 			"CAD",
@@ -121,15 +115,26 @@ func (app *Config) showPreferences() fyne.Window {
 			app.App.Preferences().SetString("currency", value)
 		},
 	)
-	cur.Selected = currency
 
-	btn := widget.NewButton("Save", func() {
-		win.Close()
-		app.refreshPriceContent(false)
+	preferenceForm := dialog.NewForm(
+		"Preferences",
+		"Save",
+		"Cance",
+		[]*widget.FormItem{
+			{Text: "Currency", Widget: cur},
+		},
+		func(valid bool) {
+			if valid {
+				cur.Selected = currency
+
+				app.refreshPriceContent(false)
+			}
+		},
+		app.MainWindow,
+	)
+
+	preferenceForm.Resize(fyne.Size{
+		Width: 400,
 	})
-	btn.Importance = widget.HighImportance
-
-	win.SetContent(container.NewVBox(label, cur, btn))
-
-	return win
+	preferenceForm.Show()
 }
