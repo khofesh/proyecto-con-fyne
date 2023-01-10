@@ -25,6 +25,8 @@ type Config struct {
 	PriceChartContainer *fyne.Container
 	HTTPClient          *http.Client
 	DB                  repository.Repository
+	Holdings            [][]any
+	HoldingsTable       *widget.Table
 	mutex               sync.Mutex
 }
 
