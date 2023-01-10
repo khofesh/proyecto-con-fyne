@@ -1,7 +1,7 @@
-BINARY_NAME=GoldWatcher.app
+BINARY_NAME=GoldWatcher
 APP_NAME=GoldWatcher
 VERSION=1.0.1
-BUILD_NO=2
+BUILD_NO=1
 
 ## build: build binary and package app
 build:
