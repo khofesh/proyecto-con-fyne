@@ -16,18 +16,21 @@ import (
 )
 
 type Config struct {
-	App                 fyne.App
-	InfoLog             *log.Logger
-	ErrorLog            *log.Logger
-	MainWindow          fyne.Window
-	PriceContainer      *fyne.Container
-	Toolbar             *widget.Toolbar
-	PriceChartContainer *fyne.Container
-	HTTPClient          *http.Client
-	DB                  repository.Repository
-	Holdings            [][]any
-	HoldingsTable       *widget.Table
-	mutex               sync.Mutex
+	App                            fyne.App
+	InfoLog                        *log.Logger
+	ErrorLog                       *log.Logger
+	MainWindow                     fyne.Window
+	PriceContainer                 *fyne.Container
+	Toolbar                        *widget.Toolbar
+	PriceChartContainer            *fyne.Container
+	HTTPClient                     *http.Client
+	DB                             repository.Repository
+	Holdings                       [][]any
+	HoldingsTable                  *widget.Table
+	AddHoldingsPurchaseAmountEntry *widget.Entry
+	AddHoldingsPurchaseDateEntry   *widget.Entry
+	AddHoldingsPurchasePriceEntry  *widget.Entry
+	mutex                          sync.Mutex
 }
 
 func main() {
